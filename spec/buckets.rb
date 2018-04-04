@@ -9,8 +9,9 @@ describe 'Buckets' do
       bucket_list.map{|bucket| bucket[:name]}
     end
 
+    # Is this valid when your session has AWS credentials in e.g., ~/.aws ?
     context 'when we try to get all buckets without stubbing' do
-      it 'should raise an error' do
+      it 'should raise an error because there are no credentials provided' do
         begin
           Buckets.new.get_all_bucket_names
         rescue => e
